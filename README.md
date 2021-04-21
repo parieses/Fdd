@@ -1,4 +1,5 @@
 # Fdd
+### 安装 composer require liang/fadada
 ### 方法清单
 #### 1注册账号 accountRegister
 #####1)此接口针对接入平台已有账号体系,判断open_id是否存在,存在则返回对应账号。否则随机生成账号并返回账号
