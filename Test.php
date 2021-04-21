@@ -6,7 +6,7 @@ use Fdd\FddServer;
 require __DIR__ . '/vendor/autoload.php';
 
 
-$fdd = new FddServer(404505, '41Kjo531IKJI39Omkr7d0Hj7', "https://testapi.fadada.com:8443/api/");
+$fdd = new FddServer('40***5', '41Kjo5***Omkr7d0Hj7', "https://testapi.fadada.com:8443/api/");
 $accountRegister = $fdd->accountRegister('open_id', 1);
 $customer_id = $accountRegister->data;
 //获取企业实名认证地址
