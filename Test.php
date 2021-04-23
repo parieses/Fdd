@@ -7,8 +7,15 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 $fdd = new FddServer('40***5', '41Kjo5***Omkr7d0Hj7', "https://testapi.fadada.com:8443/api/");
-$accountRegister = $fdd->accountRegister('open_id', 1);
-$customer_id = $accountRegister->data;
+//$accountRegister = $fdd->accountRegister('open_id', 1);
+//$customer_id = $accountRegister->data;
+$result = $fdd->addSignature('07BDE1D40CCCD26E51DA440EF84A4F12',"https://img0.baidu.com/it/u=2563232234,119593447&fm=26&fmt=auto&gp=0.jpg" );
+//4991582
+//4991583
+var_dump($result);die();
+
+
+
 //获取企业实名认证地址
 //$getCompanyVerifyUrl = $fdd->getPersonVerifyUrl($customer_id,'https://member.cn1.utools.club/Test.php','18300715792','王亮');
 //var_dump($getCompanyVerifyUrl);
@@ -37,13 +44,13 @@ $customer_id = $accountRegister->data;
 
 //$extSignAuto = $fdd->extSignAuto('20210000000','11111111111',$customer_id,1,'自动签字');
 //var_dump($extSignAuto);
-$extSignAuto = $fdd->extSign('20210000000','11111111111',$customer_id,1,'手动');
-var_dump($extSignAuto);
+//$extSignAuto = $fdd->extSign('20210000000','11111111111',$customer_id,1,'手动');
+//var_dump($extSignAuto);
 //$viewContract = $fdd->viewContract('12123123');
 //echo $viewContract;
 
 $downLoadContract = $fdd->downLoadContract('11111111111',1);
-//file_put_contents('测试合同下载.pdf', $downLoadContract);
+file_put_contents('测试合同下载.pdf', $downLoadContract);
 //echo $downLoadContract;
 //$contractFiling = $fdd->contractFiling('12123123');
 //var_dump($contractFiling);
