@@ -613,6 +613,10 @@ class FddServer implements FddInterface
         if (is_file($file_path)) {
             return base64_encode(file_get_contents($file_path));
         }
+        $url = parse_url($file_path);
+        if (isset($url['scheme']) && in_array($url['scheme'],['http', 'https'])){
+            return base64_encode(file_get_contents($file_path));
+        }
         throw new UnexpectedValueException('文件不存在');
     }
 }
