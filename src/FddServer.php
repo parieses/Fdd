@@ -449,7 +449,7 @@ class FddServer implements FddInterface
      * @param string $contract_id :合同编号
      * @return string
      */
-    public function viewContract(string $contract_id): string
+    public function viewContract(string $contract_id)
     {
         $params = $this->getParams(compact('contract_id'));
         $url = $this->baseUrl . UrlConfig::VIEW_CONTRACT;
@@ -577,7 +577,7 @@ class FddServer implements FddInterface
      * @param int    $auth_type
      * @return string
      */
-    public function beforeAuthsign($transaction_id, $contract_id, $customer_id, $return_url = 'www.baidu.com', $notify_url = 'www.baidu.com', $auth_type = 1)
+    public function beforeAuthsign($transaction_id, $contract_id, $customer_id, $return_url , $notify_url , $auth_type = 1)
     {
         $msg_digest = base64_encode(
             strtoupper(
