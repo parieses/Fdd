@@ -559,6 +559,77 @@ class FddServer implements FddInterface
         return $this->curl->post($url, $params);
     }
 
+    /**
+     * 自动签署授权
+     * Created by Mr.亮先生.
+     * program: Fdd
+     * FuncName:beforeAuthsign
+     * status:
+     * User: Mr.liang
+     * Date: 2021/4/24
+     * Time: 10:16
+     * Email:1695699447@qq.com
+     * @param        $transaction_id
+     * @param        $contract_id
+     * @param        $customer_id
+     * @param string $return_url
+     * @param string $notify_url
+     * @param int    $auth_type
+     * @return string
+     */
+    public function beforeAuthsign($transaction_id, $contract_id, $customer_id, $return_url = 'www.baidu.com', $notify_url = 'www.baidu.com', $auth_type = 1)
+    {
+        $msg_digest = base64_encode(
+            strtoupper(
+                sha1(
+                    $this->appId
+                    . strtoupper(md5($transaction_id . $this->timestamp))
+                    . strtoupper(
+                        sha1(
+                            $this->appSecret . $customer_id
+                        )
+                    )
+                )
+            )
+        );
+        $data = [
+            //业务参数
+            'transaction_id' => $transaction_id,
+            'contract_id' => $contract_id,
+            'customer_id' => $customer_id,
+            'return_url' => $return_url,
+            'notify_url' => $notify_url,
+            'auth_type' => $auth_type,
+        ];
+        ksort($data,1);
+        $params = $this->getCommonParams($msg_digest) + $data;
+        $url = $this->baseUrl . UrlConfig::BEFORE_AUTHSIGN;
+        return $url . '?' . http_build_query($params);
+    }
+
+    /**
+     * 查询授权自动签状态接口
+     * Created by Mr.亮先生.
+     * program: Fdd
+     * FuncName:getAuthStatus
+     * status:
+     * User: Mr.liang
+     * Date: 2021/4/24
+     * Time: 10:18
+     * Email:1695699447@qq.com
+     * @param $customer_id
+     * @return mixed
+     */
+    public function getAuthStatus($customer_id){
+        $params = $this->getParams(compact('customer_id'));
+        $url = $this->baseUrl . UrlConfig::GET_AUTH_STATUS;
+        return $this->curl->post($url, $params);
+    }
+    public function cancelExtsignAutoPage($customer_id){
+        $params = $this->getParams(compact('customer_id'));
+        $url = $this->baseUrl . UrlConfig::CANCEL_EXTSIGN_AUTO_PAGE;
+        return $url . '?' . http_build_query($params);
+    }
 
     private function getParams($personal)
     {

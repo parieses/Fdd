@@ -44,5 +44,12 @@ class UrlConfig
     public const VIEW_TEMPLATE = '/api/view_template.api';
     //合同模板下载
     public const DOWNLOAD_TEMPLATE = '/api/download_template.api';
+    //模板删除
     public const TEMPLATE_DELETE = '/api/template_delete.api';
+    //授权页面接口
+    public const BEFORE_AUTHSIGN =  '/api/before_authsign.api';
+    //查询授权自动签状态接口
+    public const GET_AUTH_STATUS = '/api/get_auth_status.api';
+    //取消授权签协议接口
+    public const CANCEL_EXTSIGN_AUTO_PAGE= '/api/cancel_extsign_auto_page.api';
 }

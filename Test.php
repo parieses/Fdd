@@ -6,13 +6,12 @@ use Fdd\FddServer;
 require __DIR__ . '/vendor/autoload.php';
 
 
-$fdd = new FddServer('40***5', '41Kjo5***Omkr7d0Hj7', "https://testapi.fadada.com:8443/api/");
-//$accountRegister = $fdd->accountRegister('open_id', 1);
-//$customer_id = $accountRegister->data;
-$result = $fdd->addSignature('07BDE1D40CCCD26E51DA440EF84A4F12',"https://img0.baidu.com/it/u=2563232234,119593447&fm=26&fmt=auto&gp=0.jpg" );
+$fdd = new FddServer('40***5', '41Kjo5***Omkr7d0Hj7', "https://testapi.fadada.com:8443");
+$accountRegister = $fdd->accountRegister('open_id', 1);
+$customer_id = $accountRegister->data;
+//$result = $fdd->addSignature('07BDE1D40CCCD26E51DA440EF84A4F12',"https://img0.baidu.com/it/u=2563232234,119593447&fm=26&fmt=auto&gp=0.jpg" );
 //4991582
 //4991583
-var_dump($result);die();
 
 
 
@@ -49,11 +48,15 @@ var_dump($result);die();
 //$viewContract = $fdd->viewContract('12123123');
 //echo $viewContract;
 
-$downLoadContract = $fdd->downLoadContract('11111111111',1);
-file_put_contents('测试合同下载.pdf', $downLoadContract);
+//$downLoadContract = $fdd->downLoadContract('11111111111',1);
+//file_put_contents('测试合同下载.pdf', $downLoadContract);
 //echo $downLoadContract;
 //$contractFiling = $fdd->contractFiling('12123123');
 //var_dump($contractFiling);
 
-$findPersonCertInfo = $fdd->findPersonCertInfo('7b2f7789fc6c4b64b143ab4dfb63bc6b');
-var_dump($findPersonCertInfo);
+//$findPersonCertInfo = $fdd->findPersonCertInfo('7b2f7789fc6c4b64b143ab4dfb63bc6b');
+//var_dump($findPersonCertInfo);
+//$result =$fdd->beforeAuthsign('18300715793','183007157912','D09B8E9066C6606DB3DA523CB3792269');
+//var_dump($result);die();
+$result =$fdd->cancelExtsignAutoPage('D09B8E9066C6606DB3DA523CB3792269');
+var_dump($result);die();
