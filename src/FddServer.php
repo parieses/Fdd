@@ -627,6 +627,19 @@ class FddServer implements FddInterface
         return $this->curl->post($url, $params);
     }
 
+    /**
+     * 取消自动签字授权
+     * Created by Mr.亮先生.
+     * program: Fdd
+     * FuncName:cancelExtsignAutoPage
+     * status:
+     * User: Mr.liang
+     * Date: 2021/4/24
+     * Time: 16:14
+     * Email:1695699447@qq.com
+     * @param $customer_id
+     * @return string
+     */
     public function cancelExtsignAutoPage($customer_id)
     {
         $params = $this->getParams(compact('customer_id'));
