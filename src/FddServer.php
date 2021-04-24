@@ -601,7 +601,7 @@ class FddServer implements FddInterface
             'notify_url' => $notify_url,
             'auth_type' => $auth_type,
         ];
-        ksort($data,1);
+        ksort($data, 1);
         $params = $this->getCommonParams($msg_digest) + $data;
         $url = $this->baseUrl . UrlConfig::BEFORE_AUTHSIGN;
         return $url . '?' . http_build_query($params);
@@ -620,15 +620,45 @@ class FddServer implements FddInterface
      * @param $customer_id
      * @return mixed
      */
-    public function getAuthStatus($customer_id){
+    public function getAuthStatus($customer_id)
+    {
         $params = $this->getParams(compact('customer_id'));
         $url = $this->baseUrl . UrlConfig::GET_AUTH_STATUS;
         return $this->curl->post($url, $params);
     }
-    public function cancelExtsignAutoPage($customer_id){
+
+    public function cancelExtsignAutoPage($customer_id)
+    {
         $params = $this->getParams(compact('customer_id'));
         $url = $this->baseUrl . UrlConfig::CANCEL_EXTSIGN_AUTO_PAGE;
         return $url . '?' . http_build_query($params);
+    }
+
+    /**
+     * 快捷签署接口（个人）
+     * Created by Mr.亮先生.
+     * program: Fdd
+     * FuncName:personVerifySign
+     * status:
+     * User: Mr.liang
+     * Date: 2021/4/24
+     * Time: 16:04
+     * Email:1695699447@qq.com
+     * @param     $transaction_id
+     * @param     $contract_id
+     * @param     $customer_id
+     * @param     $return_url
+     * @param     $notify_url
+     * @param     $verified_notify_url
+     * @param int $verified_way
+     * @param int $page_modify
+     * @return mixed
+     */
+    public function personVerifySign($transaction_id, $contract_id, $customer_id, $return_url, $notify_url, $verified_notify_url, $verified_way = 0, $page_modify = 1)
+    {
+        $params = $this->getParams(compact('transaction_id', 'contract_id', 'customer_id', 'return_url', 'notify_url', 'verified_notify_url', 'verified_way', 'page_modify'));
+        $url = $this->baseUrl . UrlConfig::PERSON_VERIFY_SIGN;
+        return $this->curl->post($url, $params);
     }
 
     private function getParams($personal)
@@ -685,7 +715,7 @@ class FddServer implements FddInterface
             return base64_encode(file_get_contents($file_path));
         }
         $url = parse_url($file_path);
-        if (isset($url['scheme']) && in_array($url['scheme'],['http', 'https'])){
+        if (isset($url['scheme']) && in_array($url['scheme'], ['http', 'https'])) {
             return base64_encode(file_get_contents($file_path));
         }
         throw new UnexpectedValueException('文件不存在');

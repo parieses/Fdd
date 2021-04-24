@@ -47,9 +47,11 @@ class UrlConfig
     //模板删除
     public const TEMPLATE_DELETE = '/api/template_delete.api';
     //授权页面接口
-    public const BEFORE_AUTHSIGN =  '/api/before_authsign.api';
+    public const BEFORE_AUTHSIGN = '/api/before_authsign.api';
     //查询授权自动签状态接口
     public const GET_AUTH_STATUS = '/api/get_auth_status.api';
     //取消授权签协议接口
-    public const CANCEL_EXTSIGN_AUTO_PAGE= '/api/cancel_extsign_auto_page.api';
+    public const CANCEL_EXTSIGN_AUTO_PAGE = '/api/cancel_extsign_auto_page.api';
+    //快捷签署接口（个人）
+    public const PERSON_VERIFY_SIGN = '/api/person_verify_sign.api';
 }

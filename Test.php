@@ -7,12 +7,12 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 $fdd = new FddServer('40***5', '41Kjo5***Omkr7d0Hj7', "https://testapi.fadada.com:8443");
+
 $accountRegister = $fdd->accountRegister('open_id', 1);
 $customer_id = $accountRegister->data;
 //$result = $fdd->addSignature('07BDE1D40CCCD26E51DA440EF84A4F12',"https://img0.baidu.com/it/u=2563232234,119593447&fm=26&fmt=auto&gp=0.jpg" );
 //4991582
 //4991583
-
 
 
 //获取企业实名认证地址
@@ -37,8 +37,8 @@ $customer_id = $accountRegister->data;
 //  ["msg"]=>
 //  string(7) "success"
 //}
-//$data = ['sign_person'=>'签字'];
-//$generateContract = $fdd->generateContract('内容替换','11111111111','11111111111',json_encode($data));
+$data = ['name' => 'wangliangliang', 'tel' => '18300715791'];
+//$generateContract = $fdd->generateContract('内容替换','18300715791','18300715798',json_encode($data));
 //var_dump($generateContract);
 
 //$extSignAuto = $fdd->extSignAuto('20210000000','11111111111',$customer_id,1,'自动签字');
@@ -58,5 +58,8 @@ $customer_id = $accountRegister->data;
 //var_dump($findPersonCertInfo);
 //$result =$fdd->beforeAuthsign('18300715793','183007157912','D09B8E9066C6606DB3DA523CB3792269');
 //var_dump($result);die();
-$result =$fdd->cancelExtsignAutoPage('D09B8E9066C6606DB3DA523CB3792269');
-var_dump($result);die();
+//$result =$fdd->cancelExtsignAutoPage('D09B8E9066C6606DB3DA523CB3792269');
+//var_dump($result);die();
+$result = $fdd->personVerifySign('5555555', '18300715798', $customer_id, 'http://www.12.com', 'http://www.12.com', 'http://www.12.com');
+var_dump($result);
+die();
