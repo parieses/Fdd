@@ -90,6 +90,7 @@ class FddServer implements FddInterface
      * @param string $page_modify
      * @param string $cert_flag           :是否认证成功后自动申请实名证书 参数值为“0”:不申请参数值为“1”:自动申请
      * @param int    $customer_ident_type :证件类型0身份证1其他
+     * @param int    $is_mini_program     :是否跳转法大大公证处小程序认证
      * @return null
      */
     public function getPersonVerifyUrl(
@@ -102,10 +103,11 @@ class FddServer implements FddInterface
         $verified_way = '1',
         $page_modify = '1',
         $cert_flag = '1',
-        $customer_ident_type = 0
+        $customer_ident_type = 0,
+        $is_mini_program = 0,
     ) {
         $params = $this->getParams(
-            compact('customer_id', 'notify_url', 'verified_way', 'page_modify', 'cert_flag', 'customer_ident_no', 'customer_ident_type', 'customer_name', 'mobile', 'ident_front_path')
+            compact('customer_id', 'notify_url', 'verified_way', 'page_modify', 'cert_flag', 'customer_ident_no', 'customer_ident_type', 'customer_name', 'mobile', 'ident_front_path', 'is_mini_program')
         );
         $url = $this->baseUrl . UrlConfig::GET_PERSON_VERIFY_URL;
         return $this->curl->post($url, $params);
