@@ -402,16 +402,17 @@ class FddServer implements FddInterface
      * Date: 2021/4/21
      * Time: 10:19
      * Email:1695699447@qq.com
-     * @param        $transaction_id :交易编号
-     * @param        $contract_id    :合同编号
-     * @param        $customer_id    :客户
-     * @param        $doc_title      :文档标题
-     * @param string $return_url     :页面跳转URL（签署结果同步通知）
-     * @param string $sign_keyword
-     * @param string $notify_url     :页面跳转URL（签署结果异步通知
+     * @param        $transaction_id   :交易编号
+     * @param        $contract_id      :合同编号
+     * @param        $customer_id      :客户
+     * @param        $doc_title        :文档标题
+     * @param string $return_url       :页面跳转URL（签署结果同步通知）
+     * @param string $sign_keyword     :定位关键字
+     * @param string $notify_url       :页面跳转URL（签署结果异步通知）
+     * @param string $open_environment :打开环境
      * @return string
      */
-    public function extSign($transaction_id, $contract_id, $customer_id, $doc_title, $return_url = '', $sign_keyword = '', $notify_url = ''): string
+    public function extSign($transaction_id, $contract_id, $customer_id, $doc_title, $return_url = '', $sign_keyword = '', $notify_url = '', $open_environment = 0): string
     {
         $msg_digest = base64_encode(
             strtoupper(
@@ -435,6 +436,7 @@ class FddServer implements FddInterface
                 'return_url' => $return_url,
                 'notify_url' => $notify_url,
                 'sign_keyword' => $sign_keyword,
+                'open_environment' => $open_environment,
             ];
         $url = $this->baseUrl . UrlConfig::EXT_SIGN;
         return $url . '?' . http_build_query($params);
