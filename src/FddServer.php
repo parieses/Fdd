@@ -61,11 +61,12 @@ class FddServer implements FddInterface
      * @param     $legal_info             :法人信息
      * @param int $page_modify            :是否允许用户修改页面1允许2不允许
      * @param int $company_principal_type :企业负责人身份1法人2代理人
+     * @param int $cert_flag              :是否认证成功后自动申请实名证书 为“0”：不申请参数值,为“1”：自动申请
      * @return null
      */
-    public function getCompanyVerifyUrl($customer_id, $notify_url, $legal_info, $page_modify = 1, $company_principal_type = 1)
+    public function getCompanyVerifyUrl($customer_id, $notify_url, $legal_info, $page_modify = 1, $company_principal_type = 1, $cert_flag = 1)
     {
-        $params = $this->getParams(compact('company_principal_type', 'customer_id', 'legal_info', 'notify_url', 'page_modify'));
+        $params = $this->getParams(compact('company_principal_type', 'customer_id', 'legal_info', 'notify_url', 'page_modify', 'cert_flag'));
         $url = $this->baseUrl . UrlConfig::GET_COMPANY_VERIFY_URL;
         return $this->curl->post($url, $params);
     }
