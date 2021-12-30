@@ -97,6 +97,7 @@ class FddServer implements FddInterface
      * @param int    $customer_ident_type :证件类型0身份证1其他
      * @param int    $is_mini_program     :是否跳转法大大公证处小程序认证
      * @param int    $id_photo_optional   :是否需要上传身份照片
+     * @param String $return_url          :认证结果返回地址，url地址最大长度256
      * @return null
      */
     public function getPersonVerifyUrl(
@@ -111,10 +112,11 @@ class FddServer implements FddInterface
         $cert_flag = '1',
         $customer_ident_type = 0,
         $is_mini_program = 0,
-        $id_photo_optional = 0
+        $id_photo_optional = 0,
+        $return_url = ''
     ) {
         $params = $this->getParams(
-            compact('customer_id', 'notify_url', 'verified_way', 'page_modify', 'cert_flag', 'customer_ident_no', 'customer_ident_type', 'customer_name', 'mobile', 'ident_front_path', 'is_mini_program', 'id_photo_optional')
+            compact('customer_id', 'notify_url', 'verified_way', 'page_modify', 'cert_flag', 'customer_ident_no', 'customer_ident_type', 'customer_name', 'mobile', 'ident_front_path', 'is_mini_program', 'id_photo_optional', 'return_url')
         );
         $url = $this->baseUrl . UrlConfig::GET_PERSON_VERIFY_URL;
         return $this->curl->post($url, $params);
