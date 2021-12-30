@@ -64,11 +64,12 @@ class FddServer implements FddInterface
      * @param int $verified_way           :实名认证套餐类型
      * @param int $m_verified_way         :管理员认证套餐类型 //不参与摘要计算
      * @param int $cert_flag              :是否认证成功后自动申请实名证书 0：不申请, 1：自动申请
+     * @param String $return_url          :认证结果返回地址，url地址最大长度256
      * @return null
      */
-    public function getCompanyVerifyUrl($customer_id, $notify_url, $legal_info, $page_modify = 1, $company_principal_type = 1, $verified_way = 0, $m_verified_way = 0, $cert_flag = 1)
+    public function getCompanyVerifyUrl($customer_id, $notify_url, $legal_info, $page_modify = 1, $company_principal_type = 1, $verified_way = 0, $m_verified_way = 0, $cert_flag = 1, $return_url = '')
     {
-        $params = $this->getParams(compact('company_principal_type', 'customer_id', 'legal_info', 'notify_url', 'page_modify', 'verified_way', 'cert_flag'));
+        $params = $this->getParams(compact('company_principal_type', 'customer_id', 'legal_info', 'notify_url', 'page_modify', 'verified_way', 'cert_flag', 'return_url'));
         $params = array_merge($params, compact('m_verified_way'));
         $url = $this->baseUrl . UrlConfig::GET_COMPANY_VERIFY_URL;
         return $this->curl->post($url, $params);
