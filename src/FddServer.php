@@ -16,12 +16,12 @@ class FddServer implements FddInterface
     private $baseUrl = '';
 
 
-    public function __construct($appId, $appSecret, $baseUrl)
+    public function __construct($appId, $appSecret, $baseUrl, $api = '/api')
     {
         $this->timestamp = date("YmdHis");
         $this->appId = $appId;
         $this->appSecret = $appSecret;
-        $this->baseUrl = $baseUrl;
+        $this->baseUrl = $baseUrl + $api;
         $this->curl = new Curl();
     }
 
