@@ -1,18 +1,8 @@
 {
-    "name": "liang/fadada",
+    "name": "remxcode/fadada",
     "description": "fadada extension of PHP",
-    "homepage": "https://blog.csdn.net/pariese",
     "type": "library",
-    "support": {
-        "source": "https://github.com/parieses"
-    },
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Mr. 亮先生",
-            "email": "1695699447@qq.com"
-        }
-    ],
     "minimum-stability": "stable",
     "require": {
         "php": ">7.0.0",
@@ -20,7 +10,6 @@
         "ext-curl": "*",
         "ext-json": "*"
     },
-
     "config": {
         "process-timeout": 1800
     },

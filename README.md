@@ -1,3 +1,5 @@
+本项目源自 https://github.com/parieses/Fdd，然后自己做了一些定制性的修改
+
 # Fdd
 ### 安装 composer require liang/fadada
 ### 方法清单
