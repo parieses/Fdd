@@ -21,7 +21,7 @@ class FddServer implements FddInterface
         $this->timestamp = date("YmdHis");
         $this->appId = $appId;
         $this->appSecret = $appSecret;
-        $this->baseUrl = $baseUrl + $api;
+        $this->baseUrl = $baseUrl . $api;
         $this->curl = new Curl();
     }
 
